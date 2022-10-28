@@ -23,4 +23,7 @@ git remote -v
 # origin	git@github.com:eforsthofer/eeg-sophiensiedlung.git (fetch)
 # origin	git@github.com:eforsthofer/eeg-sophiensiedlung.git (push)
 
-
+# 5. Sample Upload 
+git add git2ssh.txt
+git commit -m "Upload"
+git push
