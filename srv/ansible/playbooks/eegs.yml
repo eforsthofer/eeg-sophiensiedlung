@@ -1,0 +1,62 @@
+---
+# Wo soll ansible installieren
+- hosts: eegs
+
+# Variablen zur besseren adaptierung ?  
+  vars:
+    user: mysql
+    uid:  1234
+    gid:  1234
+    ramdisk: /ramdisk/tmpdb
+
+  tasks:
+# Pruefen ob Server verfuegbar ist
+  - name: Check if available
+    ping:
+
+# Step 1: Install Software
+# Step 2: User einrichten
+  - name: "Print CmdLine "
+    debug:
+      msg: "User {{ user }} anlegen"
+
+#- Group anlegen
+  - name: Ensure group "somegroup" exists
+    group:
+      name: "{{ user }}"
+      gid: "{{ gid }}"
+      state: present
+
+#- User anlegen
+  - name: Add the user {{ user }} with a specific uid={{ uid }} and group gid={{ gid }}
+    user:
+      name: "{{ user }}" 
+      comment: ansible
+      uid: "{{ uid }}"
+      group: "{{ gid }}"
+      create_home: no
+      home: /home/{{ user }}
+
+  - name: id user
+    command: id {{ user }} 
+
+#- RamDiskDir anlegen
+  - name: creates RamDiskDir
+    file: path={{ ramdisk }} state=directory
+
+  - name: chown 
+    command: chown {{ uid }}:{{ gid }} {{ ramdisk }}
+
+  - name: chmod 
+    command: chmod 700 {{ ramdisk }}
+
+#- fstab ergaenzen und mounten
+  - name: add fstab
+    command: echo "none   /ramdisk    ramfs  rw,size=2G,nr_inodes=5k,noexec,nodev,nosuid,uid=user,gid=group,mode=1775 0 0" >> /etc/fstab
+
+  - name: mount netapp
+    command: mount -a
+
+
+...
+

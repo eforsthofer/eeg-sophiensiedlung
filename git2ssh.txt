@@ -1,20 +1,29 @@
 # File git2ssh.txt
 
 # ssh Zugang zu github.com
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh
-$ cat ~/.ssh/id_rsa.pub 
---> Settings, SSH, New ssh key
+# https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+# 1. Create ssh key
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
-https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh
-$ git clone http://github.com/eforsthofer/eeg-sophiensiedlung
-$ git remote -v
-origin	https://github.com/eforsthofer/eeg-sophiensiedlung (fetch)
-origin	https://github.com/eforsthofer/eeg-sophiensiedlung (push)
+# 2. Copy&Paste ssh key --> Settings, SSH, New ssh key
+cat ~/.ssh/id_rsa.pub 
 
-$ git remote set-url origin git@github.com:eforsthofer/eeg-sophiensiedlung.git
+# 3. clone 
+# https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh
+git clone http://github.com/eforsthofer/eeg-sophiensiedlung
+git remote -v
+# see ...
+# origin	https://github.com/eforsthofer/eeg-sophiensiedlung (fetch)
+# origin	https://github.com/eforsthofer/eeg-sophiensiedlung (push)
 
-$ git remote -v
-origin	git@github.com:eforsthofer/eeg-sophiensiedlung.git (fetch)
-origin	git@github.com:eforsthofer/eeg-sophiensiedlung.git (push)
+# 4. http to ssh 
+git remote set-url origin git@github.com:eforsthofer/eeg-sophiensiedlung.git
+git remote -v
+# see ...
+# origin	git@github.com:eforsthofer/eeg-sophiensiedlung.git (fetch)
+# origin	git@github.com:eforsthofer/eeg-sophiensiedlung.git (push)
 
-
+# 5. Sample Upload 
+git add git2ssh.txt
+git commit -m "Upload"
+git push
