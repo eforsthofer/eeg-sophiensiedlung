@@ -1,0 +1,26 @@
+---
+# Wo soll ansible installieren
+- hosts: eegs
+
+# Variablen zur besseren adaptierung ?  
+  vars:
+    user: mysql
+    uid:  1234
+    gid:  1234
+    ramdisk: /ramdisk/tmpdb
+
+  tasks:
+# Pruefen ob Server verfuegbar ist
+  - name: Check if available
+    ping:
+            
+# Step 1: Install Software
+  - name: Install the latest version of MariaDB
+    ansible.builtin.dnf:
+      name:
+        - mariadb-server
+      state: latest
+
+
+...
+
