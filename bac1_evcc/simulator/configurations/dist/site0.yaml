@@ -1,0 +1,103 @@
+network:
+  port: 7000
+log: info
+interval: 1s
+meters:
+  - name: grid
+    type: custom
+    power:
+      source: http
+      uri: http://127.0.0.1:9000/physical/meter/gridPower
+      method: GET
+      jq: .value
+      headers:
+        - content-type: application/json
+      body: '{"id":0}'
+  - name: pv
+    type: custom
+    power:
+      source: http
+      uri: http://127.0.0.1:9000/physical/meter/pvPower
+      method: GET
+      jq: .value
+      headers:
+        - content-type: application/json
+      body: '{"id":0}'
+  - name: chargerMeter
+    type: custom
+    power:
+      source: http
+      uri: http://127.0.0.1:9000/physical/meter/chargerPower
+      method: GET
+      jq: .value
+      headers:
+        - content-type: application/json
+      body: '{"id":0}'
+chargers:
+  - name: charger
+    type: custom
+    enable:
+      source: http
+      uri: http://127.0.0.1:9000/physical/charger/enable
+      method: GET
+      jq: .value
+      headers:
+        - content-type: application/json
+      body: '{"id":0}'
+    status:
+      source: http
+      uri: http://127.0.0.1:9000/physical/charger/status
+      method: GET
+      jq: .value
+      headers:
+        - content-type: application/json
+      body: '{"id":0}'
+    maxcurrent:
+      source: http
+      uri: http://127.0.0.1:9000/physical/charger/maxCurrent
+      method: PUT
+      headers:
+        - content-type: application/json
+      body: '{"id":0,"maxcurrent":${maxcurrent}}'
+    enabled:
+      source: http
+      uri: http://127.0.0.1:9000/physical/charger/enabled
+      method: GET
+      jq: .value
+      headers:
+        - content-type: application/json
+      body: '{"id":0}'
+vehicles:
+  - name: vehicle
+    type: custom
+    title: Some Car
+    soc:
+      source: http
+      uri: http://127.0.0.1:9000/physical/vehicle/soc
+      method: GET
+      jq: .value
+      body: '{"id":0}'
+      headers:
+        - content-type: application/json
+    capacity: 1
+site:
+  title: Zuhause
+  meters:
+    grid: grid
+    pv: pv
+loadpoints:
+  - title: Some Loadpoint
+    charger: charger
+    mode: pv
+    meter: chargerMeter
+    vehicle: vehicle
+    phases: 1
+    mincurrent: 6
+    maxcurrent: 32
+    guardduration: 0s
+    enable:
+      delay: 0s
+      threshold: 0
+    disable:
+      delay: 0s
+      threshold: 0

@@ -1,0 +1,19 @@
+networkOptions:
+  simulationServer:
+    port: 9000          #integer
+  evccInstances:
+    portStart: 7000     #Automatic port generation: port = portprefix + id
+
+sites:                  
+  - id: 0               #unique side identifier (integer)
+    capacity: 1         #car capacity in kWh(integer)
+    phases: 1           #number of phases avaible to load (integer)
+    mincurrent: 6       #minimum charging current per phase in Ampere
+    maxcurrent: 32      #maximum charging current per phase in Ampere
+  
+  - id: 1               #unique side identifier (integer)
+    capacity: 1         #car capacity in kWh(integer)
+  
+    phases: 1           #number of phases avaible to load (integer)
+    mincurrent: 6       #minimum charging current per phase in Ampere
+    maxcurrent: 32      #maximum charging current per phase in Ampere

@@ -1,0 +1,28 @@
+product:
+  brand: SolarEdge
+  description: Wechselrichter
+render:
+  - usage: grid
+    default: |
+      type: template
+      template: solaredge-inverter
+      usage: grid      
+
+      # Modbus TCP
+      modbus: tcpip
+      id: 1
+      host: 192.0.2.2 # Hostname
+      port: 1502 # Port
+      timeout: 10s # Optional
+  - usage: pv
+    default: |
+      type: template
+      template: solaredge-inverter
+      usage: pv      
+
+      # Modbus TCP
+      modbus: tcpip
+      id: 1
+      host: 192.0.2.2 # Hostname
+      port: 1502 # Port
+      timeout: 10s # Optional

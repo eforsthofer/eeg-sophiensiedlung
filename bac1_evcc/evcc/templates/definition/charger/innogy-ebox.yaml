@@ -1,0 +1,14 @@
+template: innogy-ebox
+products:
+  - brand: Innogy
+    description:
+      generic: eBox
+capabilities: ["mA"]
+requirements:
+  evcc: ["sponsorship"]
+params:
+  - name: modbus
+    choice: ["tcpip"]
+render: |
+  type: innogy
+  {{- include "modbus" . }}

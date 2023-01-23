@@ -1,0 +1,9 @@
+loadpoints:
+  - title:
+    enable:
+      delay: 0s
+      threshold: 0
+    disable:
+      delay: 0s
+      threshold: 0
+    guardduration: 0s

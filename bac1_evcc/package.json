@@ -1,0 +1,29 @@
+{
+  "name": "bac1_evcc",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@its-git.fh-salzburg.ac.at:fhs44540/bac1_evcc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0",
+    "node-fetch": "^3.3.0"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.32.0",
+    "pm2": "^5.2.2",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
+}

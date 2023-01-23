@@ -1,0 +1,5 @@
+influx:
+  url: http://localhost:8086
+  database: EVCC
+  token: "123456789"
+  org: FH
