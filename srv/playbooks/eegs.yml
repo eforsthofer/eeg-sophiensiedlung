@@ -1,6 +1,6 @@
 ---
-# Target wo soll eegs installiert werden, siehe 
-- hosts: login,frontend
+# Wo soll ansible installieren
+- hosts: eegs
 
 # Variablen zur besseren adaptierung ?  
   vars:
